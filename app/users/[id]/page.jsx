@@ -1,11 +1,18 @@
-async function getUser(id) {
-  const res = await fetch(`https://reqres.in/api/users/${id}`);
-  const data = await res.json();
-  return data.data;
+import axios from 'axios';
+
+async function getUserId (id) {
+  const res = await axios.get(`https://reqres.in/api/users/${id}`)
+  return res.data.data;
 }
 
+// async function getUser(id) {
+//   const res = await fetch(`https://reqres.in/api/users/${id}`);
+//   const data = await res.json();
+//   return data.data;
+// }
+
 async function UsersPage({ params }) {
-  const user = await getUser(params.id);
+  const user = await getUserId(params.id);
 
   return (
     <div className="row">
